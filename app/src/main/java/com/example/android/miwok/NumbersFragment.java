@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class NumbersFragment extends Fragment {
+    WordCursorAdapter mCursorAdapter;
     private MediaPlayer mMediaPlayer;
 
     private AudioManager mAudioManager;
@@ -94,12 +95,12 @@ public class NumbersFragment extends Fragment {
         words.add(new Word(R.string.number_ten, R.string.miwok_number_ten,
                 R.drawable.number_ten, R.raw.number_ten));
 
-        WordAdapter adapter =
-                new WordAdapter(getActivity(), words, R.color.category_numbers);
-
+//        WordAdapter adapter =
+//                new WordAdapter(getActivity(), words, R.color.category_numbers);
+        mCursorAdapter = new WordCursorAdapter(getActivity(), null);
         ListView listView = (ListView) rootView.findViewById(R.id.list);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(mCursorAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
